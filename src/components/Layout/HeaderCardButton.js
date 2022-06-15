@@ -9,7 +9,7 @@ const HeaderCardButton = (props) => {
   const cartCtx = useContext(CardContext);
   const { items } = cartCtx;
 
-  const numberOfCartItems = cartCtx.items.reduce((curNo, item) => {
+  const numberOfCartItems = items.reduce((curNo, item) => {
     return curNo + item.amount;
   }, 0);
 
@@ -26,6 +26,7 @@ const HeaderCardButton = (props) => {
     }, 300);
     return () => {
       clearTimeout(timer);
+      setButtonIsHighlighted(false);
     };
   }, [items]);
   return (
